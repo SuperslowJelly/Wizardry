@@ -33,13 +33,15 @@ public class PlagueOfDarkness extends Spell {
 		List<EntityLivingBase> targets = WizardryUtilities.getEntitiesWithinRadius(radius, caster.posX, caster.posY, caster.posZ, world);
 
 		for(EntityLivingBase target : targets){
-			if(AllyDesignationSystem.isValidTarget(caster, target)
-					&& !MagicDamage.isEntityImmune(DamageType.WITHER, target)){
-				target.attackEntityFrom(MagicDamage.causeDirectMagicDamage(caster, DamageType.WITHER),
-						getProperty(DAMAGE).floatValue() * modifiers.get(SpellModifiers.POTENCY));
-				target.addPotionEffect(new PotionEffect(MobEffects.WITHER,
-						(int)(getProperty(EFFECT_DURATION).floatValue() * modifiers.get(WizardryItems.duration_upgrade)),
-						getProperty(EFFECT_STRENGTH).intValue() + SpellBuff.getStandardBonusAmplifier(modifiers.get(SpellModifiers.POTENCY))));
+			if(!(target instanceof EntityPlayer)) {
+				if (AllyDesignationSystem.isValidTarget(caster, target)
+						&& !MagicDamage.isEntityImmune(DamageType.WITHER, target)) {
+					target.attackEntityFrom(MagicDamage.causeDirectMagicDamage(caster, DamageType.WITHER),
+							getProperty(DAMAGE).floatValue() * modifiers.get(SpellModifiers.POTENCY));
+					target.addPotionEffect(new PotionEffect(MobEffects.WITHER,
+							(int) (getProperty(EFFECT_DURATION).floatValue() * modifiers.get(WizardryItems.duration_upgrade)),
+							getProperty(EFFECT_STRENGTH).intValue() + SpellBuff.getStandardBonusAmplifier(modifiers.get(SpellModifiers.POTENCY))));
+				}
 			}
 		}
 

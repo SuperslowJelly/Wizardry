@@ -29,8 +29,8 @@ public class Entrapment extends SpellRay {
 
 	@Override
 	protected boolean onEntityHit(World world, Entity target, Vec3d hit, EntityLivingBase caster, Vec3d origin, int ticksInUse, SpellModifiers modifiers){
-		
-		if(WizardryUtilities.isLiving(target)){
+
+		if(WizardryUtilities.isLiving(target)) {
 			
 			if(!world.isRemote){
 				// Deals a small amount damage so the target counts as being hit by the caster

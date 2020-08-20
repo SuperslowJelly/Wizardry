@@ -155,7 +155,7 @@ public class Possession extends SpellRay {
 	protected boolean onEntityHit(World world, Entity target, Vec3d hit, EntityLivingBase caster, Vec3d origin, int ticksInUse,
 								  SpellModifiers modifiers){
 
-		if(target instanceof EntityLiving && caster instanceof EntityPlayer && !isPossessing((EntityPlayer)caster)){
+		if(target instanceof EntityLiving && caster instanceof EntityPlayer && !(target instanceof EntityPlayer) && !isPossessing((EntityPlayer)caster)){
 
 			EntityPlayer player = (EntityPlayer)caster;
 

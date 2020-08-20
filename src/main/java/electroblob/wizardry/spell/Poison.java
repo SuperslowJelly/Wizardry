@@ -35,8 +35,8 @@ public class Poison extends SpellRay {
 
 	@Override
 	protected boolean onEntityHit(World world, Entity target, Vec3d hit, EntityLivingBase caster, Vec3d origin, int ticksInUse, SpellModifiers modifiers){
-		
-		if(WizardryUtilities.isLiving(target)){
+
+		if(WizardryUtilities.isLiving(target) && !(target instanceof EntityPlayer)) {
 			
 			// Has no effect on undead or spiders.
 			if(MagicDamage.isEntityImmune(DamageType.POISON, target)){

@@ -39,7 +39,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 import java.util.Map.Entry;
-import java.nio.charset.StandardCharsets;
 
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class GuiSpellDisplay {
@@ -255,7 +254,7 @@ public class GuiSpellDisplay {
 			
 			for(IResource indexFile : indexFiles){
 				
-				BufferedReader reader = new BufferedReader(new InputStreamReader(indexFile.getInputStream(), StandardCharsets.UTF_8));
+				BufferedReader reader = new BufferedReader(new InputStreamReader(indexFile.getInputStream()));
 				
 				JsonElement je = gson.fromJson(reader, JsonElement.class);
 				JsonObject json = je.getAsJsonObject();
@@ -365,7 +364,7 @@ public class GuiSpellDisplay {
 			try {
 				// This time we only want the highest priority file
 				IResource metadataFile = Minecraft.getMinecraft().getResourceManager().getResource(metadata);
-				BufferedReader reader = new BufferedReader(new InputStreamReader(metadataFile.getInputStream(), StandardCharsets.UTF_8));
+				BufferedReader reader = new BufferedReader(new InputStreamReader(metadataFile.getInputStream()));
 					
 				JsonElement je = gson.fromJson(reader, JsonElement.class);
 				

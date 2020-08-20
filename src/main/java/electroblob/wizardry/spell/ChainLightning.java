@@ -40,7 +40,7 @@ public class ChainLightning extends SpellRay {
 
 		// Anything can be attacked with the initial arc, because the player has control over where it goes. If they
 		// hit a minion or an ally, it's their problem!
-		if(WizardryUtilities.isLiving(target)){
+		if(WizardryUtilities.isLiving(target) && !(target instanceof EntityPlayer)) {
 
 			electrocute(world, caster, origin, target, getProperty(PRIMARY_DAMAGE).floatValue()
 					* modifiers.get(SpellModifiers.POTENCY));
@@ -101,7 +101,7 @@ public class ChainLightning extends SpellRay {
 			if(!world.isRemote && caster instanceof EntityPlayer) ((EntityPlayer)caster).sendStatusMessage(
 					new TextComponentTranslation("spell.resist", target.getName(), this.getNameForTranslationFormatted()),
 					true);
-		}else{
+		}else if(!(target instanceof EntityPlayer)) {
 			target.attackEntityFrom(MagicDamage.causeDirectMagicDamage(caster, DamageType.SHOCK), damage);
 		}
 

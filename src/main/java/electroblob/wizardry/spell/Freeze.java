@@ -33,8 +33,8 @@ public class Freeze extends SpellRay {
 
 	@Override
 	protected boolean onEntityHit(World world, Entity target, Vec3d hit, EntityLivingBase caster, Vec3d origin, int ticksInUse, SpellModifiers modifiers){
-		
-		if(WizardryUtilities.isLiving(target)){
+
+		if(WizardryUtilities.isLiving(target) && !(target instanceof EntityPlayer)) {
 
 			if(target instanceof EntityBlaze || target instanceof EntityMagmaCube){
 				target.attackEntityFrom(MagicDamage.causeDirectMagicDamage(caster, DamageType.FROST),

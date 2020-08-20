@@ -43,7 +43,7 @@ public class LightningRay extends SpellRay {
 	@Override
 	protected boolean onEntityHit(World world, Entity target, Vec3d hit, EntityLivingBase caster, Vec3d origin, int ticksInUse, SpellModifiers modifiers){
 
-		if(WizardryUtilities.isLiving(target)){
+		if(WizardryUtilities.isLiving(target) && !(target instanceof EntityPlayer)) {
 
 			if(MagicDamage.isEntityImmune(DamageType.SHOCK, target)){
 				if(!world.isRemote && ticksInUse == 1 && caster instanceof EntityPlayer)

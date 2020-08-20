@@ -51,7 +51,9 @@ public abstract class SpellAreaEffect extends Spell {
 		targets.removeIf(target -> !AllyDesignationSystem.isValidTarget(caster, target));
 		
 		for(EntityLivingBase target : targets){
-			affectEntity(world, caster, target, modifiers);
+			if(!(target instanceof EntityPlayer)) {
+				affectEntity(world, caster, target, modifiers);
+			}
 		}
 		
 		if(world.isRemote){

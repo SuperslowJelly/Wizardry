@@ -26,7 +26,7 @@ public class CurseOfEnfeeblement extends SpellRay {
 	@Override
 	protected boolean onEntityHit(World world, Entity target, Vec3d hit, EntityLivingBase caster, Vec3d origin, int ticksInUse, SpellModifiers modifiers){
 
-		if(WizardryUtilities.isLiving(target)){
+		if(WizardryUtilities.isLiving(target)) {
 			// This will actually run out in the end, but only if you leave Minecraft running for 3.4 years
 			((EntityLivingBase)target).addPotionEffect(new PotionEffect(WizardryPotions.curse_of_enfeeblement,
 					Integer.MAX_VALUE, getProperty(EFFECT_STRENGTH).intValue() + SpellBuff.getStandardBonusAmplifier(modifiers.get(SpellModifiers.POTENCY))));
